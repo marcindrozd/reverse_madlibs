@@ -18,8 +18,16 @@ text = File.open(ARGV.first, "r") do |file|
   file.read  
 end
 
-text = text.gsub!("NOUN", dictionary[:nouns].sample)
-text = text.gsub!("VERB", dictionary[:verbs].sample)
-text = text.gsub!("ADJECTIVE", dictionary[:adjectives].sample)
+text = text.gsub!("NOUN").each do
+  dictionary[:nouns].sample
+end
+
+text = text.gsub!("VERB").each do
+  dictionary[:verbs].sample
+end
+
+text = text.gsub!("ADJECTIVE").each do
+  dictionary[:adjectives].sample
+end
 
 puts text
